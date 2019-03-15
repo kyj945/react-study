@@ -9,11 +9,10 @@ class App extends Component {
     return (
       <div>
         {/*
-          if (){}
-          <MyName name="리액트"></MyName>
-}
+        <MyName name="리액트"></MyName>
         <Counter></Counter>
         <C></C> */}
+
       </div>
     );
   }
