@@ -44,10 +44,10 @@ class PhoneInfo extends Component {
     }
 
     if (prevState.editing && !this.state.editing) {
-      this.setState({
+      onUpdate(info.id, {
         name: this.state.name,
-        phoen: this.state.phone
-      });
+        phone: this.state.phone
+      })
     }
   }
 
@@ -70,7 +70,6 @@ class PhoneInfo extends Component {
     };
 
     const { editing } = this.state;
-
     // 수정 모드
     if(editing) {
       return (
@@ -104,8 +103,8 @@ class PhoneInfo extends Component {
       <div style={style}>
         <div><b>{name}</b></div>
         <div>{phone}</div>
-        <button onClick={this.handleRemove}>삭제</button>
         <button onClick={this.handleToggleEdit}>수정</button>
+        <button onClick={this.handleRemove}>삭제</button>
       </div>
     );
   }

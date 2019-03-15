@@ -4,14 +4,13 @@ import PhoneInfo from './PhoneInfo'
 class PhoneInfoList extends Component {
   static defaultProps = {
     list: [],
+    onUpdate: () => console.warn('onUpdate not defined'),
     onRemove: () => console.warn('onRemove not defined')
   }
 
   render() {
     const { data, onRemove, onUpdate } = this.props;
     const list = data.map (
-      //info => (<PhoneInfo key={info.id} info={info}/>)
-      //(info, index) => (<PhoneInfo key={index} info={info}/>)
       (info, index) =>
       <PhoneInfo
         key={index}
