@@ -23,7 +23,6 @@ class PhoneForm extends Component {
       name: '',
       phone: ''
     })
-
   }
 
   render() {
