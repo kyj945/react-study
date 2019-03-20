@@ -1,7 +1,7 @@
 ## 리조트 예약현황 조회 페이지
 
 ### main view
-Main.js : Main 페이지
+Main.js
 
 ### components
 DateTab.js : 날짜 조회 tab
