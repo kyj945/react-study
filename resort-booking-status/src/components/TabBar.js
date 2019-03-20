@@ -1,16 +1,42 @@
 import React, { Component } from 'react';
+import { Tabs, Tab } from 'react-bootstrap'
 
 class TabBar extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+    };
+  }
+
+  static defaultProps = {
+    resortList: []
+  }
+
+  createTab = () => {
+    let tabBar = [];
+    const { resortList } = this.props;
+    const resortCount = resortList.length;
+
+    for(let i=0; i<resortCount; i++){
+      let resortName = resortList[i].name
+      let idx = resortList[i].idx
+      tabBar.push(<Tab eventKey={idx} title={resortName}></Tab>)
+    }
+    return tabBar;
+  }
+
+  handleSelect = (idx) => {
+    this.props.selectResort(idx)
+  }
+
   render() {
     return (
-      <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#tag1">비발디파크</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tag2">양양 쏠비치</a>
-          </li>
-      </ul>
+      <Tabs
+        id="controlled-tab-example"
+        onSelect={idx => this.handleSelect(idx)}
+      >
+        {this.createTab()}
+      </Tabs>
     );
   }
 }

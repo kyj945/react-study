@@ -1,0 +1,29 @@
+.arrowLeft {
+  width:0px;
+  height:0px;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right:18px solid blue;
+  margin: 0px 20px 0px;
+}
+
+.arrowRight {
+  width:0px;
+  height:0px;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-left: 18px solid blue;
+  margin: 0px 20px 0px;
+}
+
+.bgTransparent {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.dateSection {
+  margin: 20px 0px 20px;
+  font-size: 24px;
+  text-align: center;
+}
