@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## 리조트 예약현황 조회 페이지
 
 ### Main
