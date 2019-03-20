@@ -114,9 +114,8 @@ class Main extends Component {
       }
 
       return (
-        <div className="container" >
-          <div className="bs-docs-section">
-
+        <div className="mainContainer" >
+          <div>
             <DateTab searchDateInfo={searchDate} beforeWeek={beforeWeek} nextWeek={nextWeek}/>
             <TabBar resortList={resortList} selectResort={selectResort}/>
             <BookingInfo roomSectorsInfo={roomSectors[selectIdx]} searchDateInfo={changeDateListFormat()}/>
