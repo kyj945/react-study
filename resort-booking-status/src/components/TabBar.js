@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
-import { Tabs, Tab } from 'react-bootstrap'
+import { Tabs, Tab } from 'react-bootstrap';
 
 class TabBar extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-    };
-  }
-
   static defaultProps = {
-    resortList: []
+    resortList: [],
   }
 
   createTab = () => {
-    let tabBar = [];
+    const tabBar = [];
     const { resortList } = this.props;
     const resortCount = resortList.length;
 
-    for(let i=0; i<resortCount; i++){
-      let resortName = resortList[i].name
-      let idx = resortList[i].idx
-      tabBar.push(<Tab eventKey={idx} title={resortName}></Tab>)
+    for (let i = 0; i < resortCount; i += 1) {
+      const { name } = resortList[i];
+      const { idx } = resortList[i];
+      tabBar.push(
+        <Tab eventKey={idx} title={name} />,
+      );
     }
     return tabBar;
   }
 
   handleSelect = (idx) => {
-    this.props.selectResort(idx)
+    this.props.selectResort(idx);
   }
 
   render() {
