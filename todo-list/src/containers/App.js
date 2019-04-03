@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import TodoApp from '../components/js/TodoApp'
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <div>
-        This is todoList app!
-      </div>
+      <TodoApp />
     );
   }
 }

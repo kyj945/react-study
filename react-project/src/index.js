@@ -1,21 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers/Game';
+import App from './components/App';
 import './index.css';
-import * as serviceWorker from './serviceWorker';
-/* import App from './App';
-import PhoneBook from './phone-book/PhoneBook';
-import Main from './UserInfo/Main';
-import TodoApp from './todo-list/TodoApp'
-import ReduxApp from './redux-study/ReduxApp'
-import Index from './ImmutableJS/Index' */
-import PhoneBookApp from './ex/PhoneBookApp';
 
+const store = createStore(reducer);
 
-// ReactDOM.render(<App />, document.getElementById('root'));
-//ReactDOM.render(<PhoneBook />, document.getElementById('root'));
-//ReactDOM.render(<Main />, document.getElementById('root'));
-// ReactDOM.render(<TodoApp />, document.getElementById('root'));
-//ReactDOM.render(<ReduxApp />, document.getElementById('root'));
-//ReactDOM.render(<Index />, document.getElementById('root'));
-ReactDOM.render(<PhoneBookApp />, document.getElementById('root'));
-serviceWorker.unregister();
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
