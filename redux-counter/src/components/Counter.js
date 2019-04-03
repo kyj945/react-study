@@ -3,27 +3,28 @@ import PropTypes from 'prop-types';
 import './Counter.css'
 
 const Counter = ({
-  number, color, onIncrement, onDecrement, onSetColor
+  number, color, index, onIncrement, onDecrement, onSetColor
 }) => {
   return (
     <div
       className = "Counter"
-      onClick={onIncrement}
-      onDoubleClick={onSetColor}
+      onClick={() => onIncrement(index)}
       onContextMenu={
         (e) => {
-          e.preventDefault();
-          onDecrement();
+            e.preventDefault();
+            onDecrement(index);
         }
       }
-    style={{backgroundColor: color}}>
-    {number}
+      onDoubleClick={() => onSetColor(index)}
+      style={{backgroundColor: color}}>
+      {number}
     </div>
   );
 }
 
 //props 타입체크
 Counter.propTypes = {
+  index: PropTypes.number,
   number: PropTypes.number,
   color: PropTypes.string,
   onIncrement: PropTypes.func,
@@ -32,11 +33,12 @@ Counter.propTypes = {
 }
 
 Counter.defaultProps = {
+  index: 0,
   number: 0,
   color: 'blue',
   onIncrement: () => console.warn('onIncrement not defined'),
   onDecrement: () => console.warn('onDecrement not defined'),
-  onSetColor: () => console.warn('onSelector not defined')
+  onSetColor: () => console.warn('onSetColor not defined')
 }
 
 export default Counter;
