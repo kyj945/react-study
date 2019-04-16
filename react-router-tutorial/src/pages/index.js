@@ -1,6 +1,6 @@
-export { default as Home } from './Home'
-export { default as About } from './About'
-
-export { default as Body1 } from './Body1'
-export { default as Body2 } from './Body2'
-export { default as Body3 } from './Body3'
+export { default as Home } from './Home';
+export { default as Login } from './Login';
+export { default as Register } from './Register';
+export { default as Setting } from './Setting';
+export { default as Posts } from './Posts';
+export { default as Post } from './Post';

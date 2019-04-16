@@ -30,6 +30,7 @@ const CounterList = ({
   );
 }
 
+//데이터 유효 체크 -> 개발 모드에서만 실행한다. 
 CounterList.propTypes = {
   counters: PropTypes.instanceOf(List),
   onIncrement: PropTypes.func,

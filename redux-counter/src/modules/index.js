@@ -1,3 +1,4 @@
+//redux-actions을 사용하여 액션 자동화
 import {createAction, handleActions} from 'redux-actions';
 import {Map, List} from 'immutable';
 
@@ -7,10 +8,13 @@ const INCREMENT = 'counter/INCREMENT';
 const DECREMENT = 'counter/DECREMENT';
 const SET_COLOR = 'counter/SET_COLOR';
 
+//파라미터로 전달받는 값 : 액션의 payload값으로 설정
 export const create = createAction(CREATE);
 export const remove = createAction(REMOVE);
+//ex) increment(3) 실행 시 {type: 'INCREMENT', payload: 5}
 export const increment = createAction(INCREMENT);
 export const decrement = createAction(DECREMENT);
+//ex) setColor({index:5, color:#fff})
 export const setColor = createAction(SET_COLOR);
 
 const initialState = Map({
@@ -22,6 +26,7 @@ const initialState = Map({
   ])
 })
 
+//handleActions(reducerMap, defaultState)
 export default handleActions({
   [CREATE]: (state, action) => {
     const counters = state.get('counters');

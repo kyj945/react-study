@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class Header extends Component {
-  render () {
+export default class Header extends Component {
+  render() {
     return (
       <div>
-        Header 영역
+        <Link to="/"> 홈 </Link>
+        <Link to="/about/yeojin"> 소개 </Link>
+        <Link to="/posts"> 포스트 </Link>
+        <Link to="/login"> 로그인 </Link>
       </div>
-    );
+    )
   }
 }
-
-export default Header;
