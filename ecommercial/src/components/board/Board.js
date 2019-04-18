@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-// import Dimmed from '../common/Dimmed';
+import Dimmed from 'components/common/Dimmed';
 import BoardList from './BoardList';
+import BoardModal from './BoardModal';
+import { Map, List } from 'immutable';
 
 class Board extends Component {
-
   state = {
     modal: {
       visible: false,
@@ -25,26 +26,126 @@ class Board extends Component {
     ]
   }
 
-  //modal handler 추가
+  onCreate = () => {
+    this.modalHandler.show(
+      'create'
+    )
+  }
 
 
-  onOpenModify = (id) => {
+  onModify = (id) => {
     const { boards } = this.state;
-    const index = boards.findIndex(board => board.get(id) === id);
+    //const index = boards.findIndex(board => board.id === id);
+    const index = boards.findIndex(board => board.id === id);
     const item = boards[index];
 
-    //modal 영역
+    this.modalHandler.show(
+      'modify',
+      {
+        ...item,
+        index
+      }
+    );
+  }
+
+  modalHandler = {
+    show: (mode, payload) => {
+      this.setState({
+        modal: {
+          visible: true,
+          mode,
+          ...payload
+        }
+      })
+    },
+    hide: () => {
+      this.setState({
+        modal: {
+          ...this.state.modal,
+          visible: false
+        }
+      })
+    },
+    change: ({name, value}) => {
+      this.setState({
+        modal: {
+          ...this.state.modal,
+          [name] : value
+        }
+      })
+    },
+    action: {
+      create: () => {
+        const id = boards.length + 1
+        const {
+          modal: { title, content },
+          boards
+        } = this.state;
+
+        const board = { id, title, content } ;
+
+        this.setState({
+          boards: [...boards, board]
+        })
+      },
+      modify: (id) => {
+        const {
+          modal: { title, content, index},
+          boards
+        } = this.state;
+
+        const item = boards[index];
+
+        this.setState({
+          boards: [
+            ...boards.slice(0, index),
+            {
+              ...item,
+              title,
+              content
+            },
+            ...boards.slice(index + 1, boards.length)
+          ]
+        });
+        this.modalHandler.hide();
+      },
+      remove: (id) => {
+        const {
+          modal: { index },
+          boards
+        } = this.state;
+
+        this.setState({
+          boards: [
+            ...boards.slice(0, index),
+            ...boards.slice(index + 1, boards.length)
+          ]
+        });
+        this.modalHandler.hide();
+      }
+    }
   }
 
   render() {
-    const { onOpenModify } = this;
+    const { onCreate, onModify, onRemove, modalHandler } = this;
     const { modal, boards } = this.state;
 
     return(
-      <BoardList
-        boards={boards}
-        onOpenModify={onOpenModify}
-      />
+      <div className="container">
+        <button onClick={() => onCreate()}>add board</button>
+        <BoardList
+          boards={boards}
+          onModify={onModify}
+          onRemove={modalHandler.action['remove']}
+        />
+
+        <BoardModal
+          {...modal}
+          onHide={modalHandler.hide}
+          onAction={modalHandler.action[modal.mode]}
+        />
+        <Dimmed visible={modal.visible}/>
+      </div>
     );
   }
 }

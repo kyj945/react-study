@@ -5,28 +5,25 @@ import BoardItem from './BoardItem';
 class BoardList extends Component {
   static propTypes = {
     boards: PropTypes.arrayOf(PropTypes.object),
-    onOpenModify: PropTypes.func
-  }
-
-  handleCreate = () => {
-    // modal open
+    onModify: PropTypes.func,
+    onRemove: PropTypes.func
   }
 
   render() {
     const { handleCreate } = this;
-    const { boards, onOpenModify } = this.props;
-    const boardList = boards.map(board => (
+    const { boards, onModify, onRemove } = this.props;
+    const boardList = boards.map((board, i) => (
       <BoardItem
+        idx={i + 1}
         key={board.id}
         board={board}
-        onOpenModify={onOpenModify}
+        onModify={onModify}
+        onRemove={onRemove}
       />
     )
   );
 
   return (
-    <div className="container">
-     <button onClick={() => handleCreate}>add board</button>
       <table class="table">
         <thead>
           <tr>
@@ -41,7 +38,6 @@ class BoardList extends Component {
           {boardList}
         </tbody>
       </table>
-    </div>
   );
   }
 }

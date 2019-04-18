@@ -7,7 +7,6 @@ const CHANGE = 'modal/CHANGE';
 
 export const show = createAction(SHOW);
 export const hide = createAction(HIDE);
-// modal 내부 input 내용을 변경해준다.
 export const change = createAction(CHANGE);
 
 const initialState = Map({

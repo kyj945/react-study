@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import onClickOutside from 'react-onclickoutside';
-import {media, transitions} from '.../lib/style-utils';
+import {media, transitions} from 'lib/style-utils';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import PropTypes from 'prop-types';
@@ -46,7 +46,6 @@ const ModalBox = styled.div`
     background: white;
     border: 1px solid rgba(0,0,0,0.3);
 `
-
 class Modal extends Component {
     static propTypes = {
         visible: PropTypes.bool,
@@ -55,7 +54,7 @@ class Modal extends Component {
     }
 
     static defaultProps = {
-        width: '400px'
+          width: '400px'
     }
 
     // 컴포넌트 외부를 클릭하면 실행되는 메소드
@@ -92,22 +91,22 @@ class Modal extends Component {
 
     render() {
         // 레퍼런스 생성
-        const {visible, children, width} = this.props;
+        const { visible, children, width } = this.props;
 
         return (
-            <div>
-                <Wrapper width={width}>
-                    <CSSTransitionGroup
-                        transitionName="modal"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={500}>
-                        {
-                            /* visible 이 참일때만 ModalBox 보여줌 */
-                            visible && (<ModalBox>{children}</ModalBox>)
-                        }
-                    </CSSTransitionGroup>
-                </Wrapper>
-            </div>
+          <div>
+              <Wrapper width={width}>
+                  <CSSTransitionGroup
+                      transitionName="modal"
+                      transitionEnterTimeout={500}
+                      transitionLeaveTimeout={500}>
+                      {
+                          /* visible 이 참일때만 ModalBox 보여줌 */
+                          visible && (<ModalBox>{children}</ModalBox>)
+                      }
+                  </CSSTransitionGroup>
+              </Wrapper>
+          </div>
         );
     }
 }

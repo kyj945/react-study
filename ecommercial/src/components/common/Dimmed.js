@@ -21,7 +21,7 @@ const Black = styled.div`
 
 const Dimmed = ({visible}) => (
     <div>
-        {visible && <Black/>}
+        { visible && <Black/> }
     </div>
 );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media } from '.../lib/style-utils';
+import { media } from 'lib/style-utils';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
